@@ -51,6 +51,7 @@
     <Compile Include="TopRated.xaml.cs">
       <DependentUpon>TopRated.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ServiceStack.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

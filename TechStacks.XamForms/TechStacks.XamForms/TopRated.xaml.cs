@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceStack;
+using TechStacks.ServiceModel;
 using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
 
@@ -26,10 +29,39 @@ namespace TechStacks.XamForms
         public TopRated()
         {
             InitializeComponent();
+			TopTechs = new ObservableCollection<TechnologyInfo>();
             foreach (string val in techTypes.Values)
             {
                 this.topTechPicker.Items.Add(val);
             }
+			topTechListView.ItemsSource = this.TopTechs;
+			this.topTechPicker.SelectedIndexChanged += delegate
+			{
+				TopTechs.Clear();
+				//Filter
+				foreach (var techInfo in AllTopTechs)
+				{
+					if (techInfo.Tier == techTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
+					{
+						TopTechs.Add(techInfo);
+					}
+				}
+			};
         }
+
+
+		private void InitWithTopTechs()
+		{
+			var response = AppUtils.ServiceClient.GetAsync(new AppOverview());
+			response.ConfigureAwait(false);
+			response.ContinueWith(x =>
+			{
+				AllTopTechs = x.Result.TopTechnologies;
+			});
+		}
+
+
+		public ObservableCollection<TechnologyInfo> TopTechs { get; set; }
+		public List<TechnologyInfo> AllTopTechs { get; set; }
     }
 }

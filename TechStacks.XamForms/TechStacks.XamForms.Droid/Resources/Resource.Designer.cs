@@ -26,6 +26,8 @@ namespace TechStacks.XamForms.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::ServiceStack.Pcl.Android.Resource.String.ApplicationName = global::TechStacks.XamForms.Droid.Resource.String.ApplicationName;
+			global::ServiceStack.Pcl.Android.Resource.String.Hello = global::TechStacks.XamForms.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::TechStacks.XamForms.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::TechStacks.XamForms.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::TechStacks.XamForms.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
