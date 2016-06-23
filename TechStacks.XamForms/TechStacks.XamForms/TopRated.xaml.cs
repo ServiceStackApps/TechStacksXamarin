@@ -30,6 +30,7 @@ namespace TechStacks.XamForms
         {
             InitializeComponent();
 			TopTechs = new ObservableCollection<TechnologyInfo>();
+			AllTopTechs = new List<TechnologyInfo>();
             foreach (string val in techTypes.Values)
             {
                 this.topTechPicker.Items.Add(val);
