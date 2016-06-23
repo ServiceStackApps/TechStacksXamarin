@@ -4484,6 +4484,9 @@ namespace TechStacks.XamForms.Droid
 			// aapt resource value: 0x7f070006
 			public const int CardView_Light = 2131165190;
 			
+			// aapt resource value: 0x7f070146
+			public const int CustomTabText = 2131165510;
+			
 			// aapt resource value: 0x7f070144
 			public const int MyTheme = 2131165508;
 			
