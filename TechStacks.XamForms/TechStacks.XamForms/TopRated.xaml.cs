@@ -48,6 +48,7 @@ namespace TechStacks.XamForms
 					}
 				}
 			};
+			InitWithTopTechs();
         }
 
 
