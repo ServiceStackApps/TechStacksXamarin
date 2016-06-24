@@ -13,6 +13,7 @@ namespace TechStacks.XamForms
         public MainPage()
         {
             InitializeComponent();
+            
         }
     }
 }

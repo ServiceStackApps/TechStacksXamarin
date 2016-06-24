@@ -10,7 +10,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace TechStacks.XamForms.Droid
 {
-    [Activity(Label = "TechStacks.XamForms", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "TechStacks", Icon = "@mipmap/logo_transparent", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -22,6 +22,7 @@ namespace TechStacks.XamForms.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+            
         }
     }
 }

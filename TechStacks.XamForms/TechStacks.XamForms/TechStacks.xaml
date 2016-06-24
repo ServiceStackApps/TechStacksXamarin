@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechStacks.XamForms.TechStacks"
-		Title="TechStacks">
+		         Title="TechStacks">
   <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
     <SearchBar Placeholder="Search TechStacks" x:Name="SearchBarTechStacks"></SearchBar>
     <ListView x:Name="TechStacksListView" VerticalOptions="FillAndExpand">

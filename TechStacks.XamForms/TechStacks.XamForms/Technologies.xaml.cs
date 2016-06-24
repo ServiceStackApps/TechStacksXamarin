@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
+using ServiceStack;
+using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
 
 namespace TechStacks.XamForms
@@ -12,7 +15,47 @@ namespace TechStacks.XamForms
     {
         public Technologies()
         {
+            TechStackDataSource = new ObservableCollection<Technology>();
+            TechStacksData = new List<Technology>();
             InitializeComponent();
+            SearchBarTechnologies.TextChanged += (sender, args) => { Search(); };
+            TechnologiesListView.ItemsSource = TechStackDataSource;
+            InitData();
         }
+
+        private void Search()
+        {
+            var responseTask = AppUtils.ServiceClient.
+                GetAsync<QueryResponse<Technology>>("/technology/search?NameContains=" + SearchBarTechnologies.Text);
+            responseTask.ConfigureAwait(false);
+            responseTask.ContinueWith(x =>
+            {
+                TechStacksData = x.Result.Results;
+                UpdateData();
+            });
+        }
+
+        private void UpdateData()
+        {
+            TechStackDataSource.Clear();
+            foreach (var techInfo in TechStacksData)
+            {
+                TechStackDataSource.Add(techInfo);
+            }
+        }
+
+        private void InitData()
+        {
+            var responseTask = AppUtils.ServiceClient.GetAsync<QueryResponse<Technology>>("/technology/search?NameContains=");
+            responseTask.ConfigureAwait(false);
+            responseTask.ContinueWith(x =>
+            {
+                TechStacksData = x.Result.Results;
+                UpdateData();
+            });
+        }
+
+        public ObservableCollection<Technology> TechStackDataSource { get; set; }
+        public List<Technology> TechStacksData { get; set; }
     }
 }

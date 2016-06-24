@@ -2,7 +2,7 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TechStacks.XamForms;assembly=TechStacks.XamForms"
-             x:Class="TechStacks.XamForms.MainPage" >
+             x:Class="TechStacks.XamForms.MainPage">
   <local:TopRated />
   <local:TechStacks />
   <local:Technologies />

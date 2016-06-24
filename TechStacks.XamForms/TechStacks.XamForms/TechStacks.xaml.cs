@@ -14,15 +14,11 @@ namespace TechStacks.XamForms
 {
     public partial class TechStacks : ContentPage
     {
-        public ICommand SearchCommand { get; private set; }
-
         public TechStacks()
         {
             TechStackDataSource = new ObservableCollection<TechnologyStack>();
             TechStacksData = new List<TechnologyStack>();
-            SearchCommand = new Command(Search);
             InitializeComponent();
-            //SearchBarTechStacks.SearchCommand = SearchCommand;
             SearchBarTechStacks.TextChanged += (sender, args) => { Search(); };
             TechStacksListView.ItemsSource = TechStackDataSource;
             InitData();

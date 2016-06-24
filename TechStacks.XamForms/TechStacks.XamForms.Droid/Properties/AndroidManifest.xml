@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="TechStacksXamarin.TechStacksXamarin">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="TechStacks.XamForms.Droid" android:theme="@style/MyTheme"></application>
+	<application android:label="TechStacks" android:theme="@style/MyTheme" android:icon="@mipmap/logo_transparent"></application>
 </manifest>
