@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechStacks.XamForms.TopRated" Title="Top Rated">
   <ContentPage.Content>
-    	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="0, 20, 0, 0">
+    	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="0, 10, 0, 0">
 			<Picker x:Name="topTechPicker" Title="       [Top 100 Technologies]       " VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Picker>
 			<ListView x:Name="topTechListView" VerticalOptions="FillAndExpand">
 				<ListView.ItemTemplate>
