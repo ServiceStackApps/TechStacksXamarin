@@ -3,5 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechStacks.XamForms.TechStacks"
 		Title="TechStacks">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+    <SearchBar Placeholder="Search TechStacks" x:Name="SearchBarTechStacks"></SearchBar>
+    <ListView x:Name="TechStacksListView" VerticalOptions="FillAndExpand">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>

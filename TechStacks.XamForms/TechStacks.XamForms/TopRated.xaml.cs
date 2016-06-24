@@ -29,53 +29,53 @@ namespace TechStacks.XamForms
         public TopRated()
         {
             InitializeComponent();
-			TopTechs = new ObservableCollection<TechnologyInfo>();
-			AllTopTechs = new List<TechnologyInfo>();
+			TopTechsDataSource = new ObservableCollection<TechnologyInfo>();
+			TopTechsData = new List<TechnologyInfo>();
             foreach (string val in techTypes.Values)
             {
                 this.topTechPicker.Items.Add(val);
             }
-			topTechListView.ItemsSource = this.TopTechs;
+			topTechListView.ItemsSource = this.TopTechsDataSource;
 			this.topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
-			InitWithTopTechs();
+			InitData();
         }
 
         private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)
         {
-            UpdateTopTechList();
+            UpdateData();
         }
 
-        private void UpdateTopTechList()
+        private void UpdateData()
         {
-            TopTechs.Clear();
+            TopTechsDataSource.Clear();
             //Filter
-            foreach (var techInfo in AllTopTechs)
+            foreach (var techInfo in TopTechsData)
             {
                 if (topTechPicker.SelectedIndex == -1)
                 {
-                    TopTechs.Add(techInfo);
+                    TopTechsDataSource.Add(techInfo);
                     continue;
                 }
                     
                 if (techInfo.Tier == techTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
-                    TopTechs.Add(techInfo);
+                    TopTechsDataSource.Add(techInfo);
             }
         }
 
 
-        private void InitWithTopTechs()
+        private void InitData()
 		{
 			var response = AppUtils.ServiceClient.GetAsync(new AppOverview());
 			response.ConfigureAwait(false);
 			response.ContinueWith(x =>
 			{
-				AllTopTechs = x.Result.TopTechnologies;
-                UpdateTopTechList();
+				TopTechsData = x.Result.TopTechnologies;
+                UpdateData();
             });
 		}
 
 
-		public ObservableCollection<TechnologyInfo> TopTechs { get; set; }
-		public List<TechnologyInfo> AllTopTechs { get; set; }
+		public ObservableCollection<TechnologyInfo> TopTechsDataSource { get; set; }
+		public List<TechnologyInfo> TopTechsData { get; set; }
     }
 }
