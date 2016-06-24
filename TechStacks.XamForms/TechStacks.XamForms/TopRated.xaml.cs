@@ -36,30 +36,42 @@ namespace TechStacks.XamForms
                 this.topTechPicker.Items.Add(val);
             }
 			topTechListView.ItemsSource = this.TopTechs;
-			this.topTechPicker.SelectedIndexChanged += delegate
-			{
-				TopTechs.Clear();
-				//Filter
-				foreach (var techInfo in AllTopTechs)
-				{
-					if (techInfo.Tier == techTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
-					{
-						TopTechs.Add(techInfo);
-					}
-				}
-			};
+			this.topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
 			InitWithTopTechs();
         }
 
+        private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)
+        {
+            UpdateTopTechList();
+        }
 
-		private void InitWithTopTechs()
+        private void UpdateTopTechList()
+        {
+            TopTechs.Clear();
+            //Filter
+            foreach (var techInfo in AllTopTechs)
+            {
+                if (topTechPicker.SelectedIndex == -1)
+                {
+                    TopTechs.Add(techInfo);
+                    continue;
+                }
+                    
+                if (techInfo.Tier == techTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
+                    TopTechs.Add(techInfo);
+            }
+        }
+
+
+        private void InitWithTopTechs()
 		{
 			var response = AppUtils.ServiceClient.GetAsync(new AppOverview());
 			response.ConfigureAwait(false);
 			response.ContinueWith(x =>
 			{
 				AllTopTechs = x.Result.TopTechnologies;
-			});
+                UpdateTopTechList();
+            });
 		}
 
 
