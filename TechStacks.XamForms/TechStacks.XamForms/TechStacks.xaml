@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechStacks.XamForms.TechStacks"
 		         Title="TechStacks">
-  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="0, 20, 0, 0">
     <SearchBar Placeholder="Search TechStacks" x:Name="SearchBarTechStacks"></SearchBar>
     <ListView x:Name="TechStacksListView" VerticalOptions="FillAndExpand">
       <ListView.ItemTemplate>
