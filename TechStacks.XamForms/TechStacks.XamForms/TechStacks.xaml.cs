@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ServiceStack;
 using TechStacks.ServiceModel;
 using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
@@ -21,21 +22,16 @@ namespace TechStacks.XamForms
             TechStacksData = new List<TechnologyStack>();
             SearchCommand = new Command(Search);
             InitializeComponent();
-            SearchBarTechStacks.SearchCommand = SearchCommand;
-            //SearchBarTechStacks.TextChanged += (sender, args) => { Search(); };
+            //SearchBarTechStacks.SearchCommand = SearchCommand;
+            SearchBarTechStacks.TextChanged += (sender, args) => { Search(); };
             TechStacksListView.ItemsSource = TechStackDataSource;
             InitData();
         }
 
         private void Search()
         {
-            var responseTask = AppUtils.ServiceClient.GetAsync(new FindTechStacks
-            {
-                Meta = new Dictionary<string, string>
-                {
-                    {"NameContains", this.SearchBarTechStacks.Text}
-                }
-            });
+            var responseTask = AppUtils.ServiceClient.
+                GetAsync<QueryResponse<TechnologyStack>>("/techstacks/search?NameContains=" + SearchBarTechStacks.Text);
             responseTask.ConfigureAwait(false);
             responseTask.ContinueWith(x =>
             {
@@ -55,7 +51,7 @@ namespace TechStacks.XamForms
 
         private void InitData()
         {
-            var responseTask = AppUtils.ServiceClient.GetAsync(new FindTechStacks());
+            var responseTask = AppUtils.ServiceClient.GetAsync<QueryResponse<TechnologyStack>>("/techstacks/search?NameContains=");
             responseTask.ConfigureAwait(false);
             responseTask.ContinueWith(x =>
             {

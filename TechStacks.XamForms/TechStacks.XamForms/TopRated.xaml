@@ -4,7 +4,7 @@
              x:Class="TechStacks.XamForms.TopRated" Title="Top Rated">
   <ContentPage.Content>
     	<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-			<Picker x:Name="topTechPicker" Title="          [Top 100 Technologies]          " VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Picker>
+			<Picker x:Name="topTechPicker" Title="[Top 100 Technologies]                " VerticalOptions="Start" HorizontalOptions="StartAndExpand"></Picker>
 			<ListView x:Name="topTechListView" VerticalOptions="FillAndExpand">
 				<ListView.ItemTemplate>
 					<DataTemplate>
