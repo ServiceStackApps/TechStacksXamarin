@@ -33,16 +33,18 @@
 	<key>CFBundleName</key>
 	<string>TechStacks.XamForms</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcons.appiconset</string>
+	<string>Resources/Assets.xcassets/AppIcons.appiconset</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleShortVersionString</key>
+	<string></string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Assets.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>

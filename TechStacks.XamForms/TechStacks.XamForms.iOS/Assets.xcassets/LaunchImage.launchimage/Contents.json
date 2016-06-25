@@ -40,6 +40,22 @@
       "filename": "Default-Portrait@2x.png",
       "size": "768x1004",
       "scale": "2x"
+    },
+    {
+      "orientation": "landscape",
+      "idiom": "ipad",
+      "extent": "to-status-bar",
+      "filename": "Default-Landscape.png",
+      "size": "1024x748",
+      "scale": "2x"
+    },
+    {
+      "orientation": "landscape",
+      "idiom": "ipad",
+      "extent": "to-status-bar",
+      "filename": "Default-Landscape@2x.png",
+      "size": "2048x1496",
+      "scale": "2x"
     }
   ],
   "info": {
