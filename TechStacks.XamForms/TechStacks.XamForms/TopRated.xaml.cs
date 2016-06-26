@@ -37,7 +37,13 @@ namespace TechStacks.XamForms
             }
 			topTechListView.ItemsSource = this.TopTechsDataSource;
 			this.topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
-			InitData();
+            this.topTechListView.ItemSelected += TopTechListViewOnItemSelected;
+            InitData();
+        }
+
+        private void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        {
+            Navigation.PushAsync(new NavigationPage(new ViewStack()));
         }
 
         private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)
