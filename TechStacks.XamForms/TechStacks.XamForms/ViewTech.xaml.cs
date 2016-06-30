@@ -25,6 +25,13 @@ namespace TechStacks.XamForms
             this.BindingContext = this.techInfo;
             this.ListView.ItemsSource = TechStacksDataSource;
             FetchDetails();
+            this.ListView.ItemSelected += ListViewOnItemSelected;
+        }
+
+        private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        {
+            var techStack = selectedItemChangedEventArgs.SelectedItem as TechnologyStack;
+            Navigation.PushAsync(new ViewStack(techStack));
         }
 
         private void FetchDetails()

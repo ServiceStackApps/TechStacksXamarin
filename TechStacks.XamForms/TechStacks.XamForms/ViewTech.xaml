@@ -4,7 +4,18 @@
              x:Class="TechStacks.XamForms.ViewTech"
              Title="{Binding Name}">
   <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
-    <Image Source="{Binding LogoUrl}" HeightRequest="100"></Image>
+    <Grid>
+      <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Text="{Binding VendorName}"></Label>
+        <Image Grid.Column="1" Source="{Binding LogoUrl}" HeightRequest="100"></Image>
+    </Grid>
+    
     <Label Text="{Binding Description}"></Label>
     <Label Text="Used in Stacks"></Label>
     <ListView x:Name="ListView">
