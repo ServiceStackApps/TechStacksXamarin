@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TechStacks.XamForms.ViewTech">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="TechStacks.XamForms.ViewTech"
+             Title="{Binding Name}">
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+    <Image Source="{Binding LogoUrl}" HeightRequest="100"></Image>
+    <Label Text="{Binding Description}"></Label>
+    <Label Text="Used in Stacks"></Label>
+    <ListView x:Name="ListView">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name}"></TextCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>

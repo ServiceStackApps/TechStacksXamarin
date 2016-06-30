@@ -26,6 +26,10 @@ namespace TechStacks.XamForms
             {TechnologyTier.ThirdPartyServices, "3rd Party API/Services" }
         };
 
+
+        public ObservableCollection<TechnologyInfo> TopTechsDataSource { get; set; }
+        public List<TechnologyInfo> TopTechsData { get; set; }
+
         public TopRated()
         {
             InitializeComponent();
@@ -43,7 +47,8 @@ namespace TechStacks.XamForms
 
         private void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
-            Navigation.PushAsync(new NavigationPage(new ViewStack()));
+            var techInfo = selectedItemChangedEventArgs.SelectedItem as TechnologyInfo;
+            Navigation.PushModalAsync(new NavigationPage(new ViewTech(techInfo)));
         }
 
         private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)
@@ -79,9 +84,5 @@ namespace TechStacks.XamForms
                 UpdateData();
             });
 		}
-
-
-		public ObservableCollection<TechnologyInfo> TopTechsDataSource { get; set; }
-		public List<TechnologyInfo> TopTechsData { get; set; }
     }
 }

@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TechStacks.XamForms.ViewStack">
-  <Label Text="This is a new stack!" VerticalOptions="Center" HorizontalOptions="Center" />
+             x:Class="TechStacks.XamForms.ViewStack"
+             Title="{Binding Name}">
+  <Image Source="{Binding LogoUrl}"></Image>
+  <Label Text="Used in Stacks"></Label>
+  <ListView x:Name="ListView">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding Name}"></TextCell>
+        <Image Source="{Binding LogoUrl}"></Image>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>
