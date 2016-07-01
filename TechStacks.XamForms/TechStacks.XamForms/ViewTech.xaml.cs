@@ -39,6 +39,8 @@ namespace TechStacks.XamForms
             this.TechStacks = response.TechnologyStacks;
             TechStacksDataSource.UpdateDataSource(this.TechStacks);
             this.technology = response.Technology;
+            if (this.TechStacks.Count == 0)
+                usedInLabel.IsVisible = false;
             Device.BeginInvokeOnMainThread(() =>
             {
                 this.BindingContext = this.technology;

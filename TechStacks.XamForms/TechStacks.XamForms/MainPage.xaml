@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TechStacks.XamForms;assembly=TechStacks.XamForms"
              x:Class="TechStacks.XamForms.MainPage">
-  <NavigationPage>
+  <NavigationPage Title="Top Rated" Icon="ic_action_heart_original.png">
     <x:Arguments>
-      <local:TopRated />
+      <local:TopRated Title="Top Rated" />
     </x:Arguments>
   </NavigationPage>
-  <NavigationPage>
+  <NavigationPage Title="Stacks" Icon="ic_action_stacks_original.png">
     <x:Arguments>
-      <local:TechStacks />
+      <local:TechStacks Title="Tech Stacks"/>
     </x:Arguments>
   </NavigationPage>
-  <NavigationPage>
+  <NavigationPage Title="Techs" Icon="ic_action_tech_original.png">
     <x:Arguments>
-      <local:Technologies />
+      <local:Technologies Title="Technologies" />
     </x:Arguments>
   </NavigationPage>
 </TabbedPage>
