@@ -15,7 +15,7 @@ namespace TechStacks.XamForms
         private readonly string stackSlug;
         public List<TechnologyInStack> TechnologiesInStack;
         public ObservableCollection<TechnologyInStack> TechnologiesInStackDataSource = new ObservableCollection<TechnologyInStack>();
-        private TechnologyStackBase technologyStack;
+        private TechStackDetails technologyStack;
 
         public ViewStack(string stackSlug)
         {

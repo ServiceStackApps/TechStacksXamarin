@@ -13,7 +13,7 @@
         <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
       <Label Grid.Column="0" Text="{Binding VendorName}"></Label>
-      <Image Grid.Column="1" Source="{Binding LogoUrl}" HeightRequest="100"></Image>
+      <Image Grid.Column="1" Source="{Binding ScreenshotUrl}" HeightRequest="100"></Image>
     </Grid>
 
     <Label Text="{Binding Description}"></Label>

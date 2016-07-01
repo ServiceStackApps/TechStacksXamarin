@@ -42,6 +42,7 @@ namespace TechStacks.XamForms
             Device.BeginInvokeOnMainThread(() =>
             {
                 this.BindingContext = this.technology;
+                this.StackLayout.BindingContext = this.technology;
                 this.ApplyBindings();
             });
         }
