@@ -45,10 +45,10 @@ namespace TechStacks.XamForms
             InitData();
         }
 
-        private void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        private async void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
             var techInfo = selectedItemChangedEventArgs.SelectedItem as TechnologyInfo;
-            Navigation.PushModalAsync(new NavigationPage(new ViewTech(techInfo)));
+            await Navigation.PushModalAsync(new ViewTech(techInfo.Slug));
         }
 
         private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)

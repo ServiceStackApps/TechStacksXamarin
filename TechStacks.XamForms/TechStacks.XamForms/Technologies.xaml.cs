@@ -20,7 +20,14 @@ namespace TechStacks.XamForms
             InitializeComponent();
             SearchBarTechnologies.TextChanged += (sender, args) => { Search(); };
             TechnologiesListView.ItemsSource = TechStackDataSource;
+            TechnologiesListView.ItemSelected += TechnologiesListViewOnItemSelected;
             InitData();
+        }
+
+        private void TechnologiesListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        {
+            var technology = selectedItemChangedEventArgs.SelectedItem as Technology;
+            Navigation.PushModalAsync(new ViewTech(technology.Slug));
         }
 
         private void Search()

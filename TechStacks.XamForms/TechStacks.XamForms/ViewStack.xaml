@@ -9,7 +9,6 @@
     <ListView.ItemTemplate>
       <DataTemplate>
         <TextCell Text="{Binding Name}"></TextCell>
-        <Image Source="{Binding LogoUrl}"></Image>
       </DataTemplate>
     </ListView.ItemTemplate>
   </ListView>
