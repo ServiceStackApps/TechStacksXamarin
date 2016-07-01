@@ -42,13 +42,13 @@ namespace TechStacks.XamForms
 			topTechListView.ItemsSource = this.TopTechsDataSource;
 			this.topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
             this.topTechListView.ItemSelected += TopTechListViewOnItemSelected;
-            InitData();
+            InitData().ConfigureAwait(false);
         }
 
-        private async void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        private void TopTechListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
             var techInfo = selectedItemChangedEventArgs.SelectedItem as TechnologyInfo;
-            await Navigation.PushModalAsync(new ViewTech(techInfo.Slug));
+            Navigation.PushModalAsync(new NavigationPage(new ViewTech(techInfo.Slug)));
         }
 
         private void TopTechPickerOnSelectedIndexChanged(object sender, EventArgs eventArgs)
@@ -74,15 +74,11 @@ namespace TechStacks.XamForms
         }
 
 
-        private void InitData()
+        private async Task InitData()
 		{
-			var response = AppUtils.ServiceClient.GetAsync(new AppOverview());
-			response.ConfigureAwait(false);
-			response.ContinueWith(x =>
-			{
-				TopTechsData = x.Result.TopTechnologies;
-                UpdateData();
-            });
-		}
+			var response = await AppUtils.ServiceClient.GetAsync(new AppOverview());
+            TopTechsData = response.TopTechnologies;
+            UpdateData();
+        }
     }
 }

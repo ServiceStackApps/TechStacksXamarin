@@ -3,13 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechStacks.XamForms.ViewStack"
              Title="{Binding Name}">
-  <Image Source="{Binding LogoUrl}"></Image>
-  <Label Text="Used in Stacks"></Label>
-  <ListView x:Name="ListView">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <TextCell Text="{Binding Name}"></TextCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>
+  <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50*" />
+        <ColumnDefinition Width="50*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Label Grid.Column="0" Text="{Binding VendorName}"></Label>
+      <Image Grid.Column="1" Source="{Binding LogoUrl}" HeightRequest="100"></Image>
+    </Grid>
+
+    <Label Text="{Binding Description}"></Label>
+    <Label Text="Technologies Used"></Label>
+    <ListView x:Name="ListView">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Name}"></TextCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,30 +13,32 @@ namespace TechStacks.XamForms
     public partial class ViewStack : ContentPage
     {
         private readonly string stackSlug;
-        private List<TechnologyInStack> technologiesInStack;
+        public List<TechnologyInStack> TechnologiesInStack;
+        public ObservableCollection<TechnologyInStack> TechnologiesInStackDataSource = new ObservableCollection<TechnologyInStack>();
         private TechnologyStackBase technologyStack;
 
         public ViewStack(string stackSlug)
         {
             this.stackSlug = stackSlug;
-            technologiesInStack = new List<TechnologyInStack>();
+            TechnologiesInStack = new List<TechnologyInStack>();
             InitializeComponent();
-            FetchTechnologies();
-            this.ListView.ItemsSource = this.technologiesInStack;
+            this.ListView.ItemsSource = this.TechnologiesInStackDataSource;
             this.ListView.ItemSelected += ListViewOnItemSelected;
+            FetchTechnologies().ConfigureAwait(false);
         }
 
         private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
             var techSelected = selectedItemChangedEventArgs.SelectedItem as TechnologyInStack;
-            Navigation.PushAsync(new NavigationPage(new ViewTech(techSelected.Slug)));
+            this.Navigation.PushAsync(new ViewTech(techSelected.Slug));
         }
 
-        private async void FetchTechnologies()
+        private async Task FetchTechnologies()
         {
             var result = await AppUtils.ServiceClient.GetAsync(new GetTechnologyStack {Slug = this.stackSlug });
-            this.technologiesInStack = result.Result.TechnologyChoices;
+            this.TechnologiesInStack = result.Result.TechnologyChoices;
             this.technologyStack = result.Result;
+            this.TechnologiesInStackDataSource.UpdateDataSource(this.TechnologiesInStack);
             Device.BeginInvokeOnMainThread(() =>
             {
                 this.BindingContext = this.technologyStack;

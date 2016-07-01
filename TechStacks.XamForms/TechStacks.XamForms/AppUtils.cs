@@ -9,13 +9,10 @@ namespace TechStacks.XamForms
 {
 	public class AppUtils
 	{
-		private static JsonServiceClient serviceClient;
-		public static JsonServiceClient ServiceClient
+		private static JsonHttpClient serviceClient;
+		public static JsonHttpClient ServiceClient
 		{
-			get
-			{
-				return (serviceClient = new JsonServiceClient("http://techstacks.io/"));
-			}
+			get { return serviceClient ?? (serviceClient = new JsonHttpClient("http://techstacks.io/")); }
 		}
 	}
 

@@ -24,21 +24,21 @@ namespace TechStacks.XamForms
             InitializeComponent();
             this.ListView.ItemsSource = TechStacksDataSource;
             this.ListView.ItemSelected += ListViewOnItemSelected;
-            FetchDetails();
+            FetchDetails().ConfigureAwait(false);
         }
 
-        private async void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
+        private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
             var techStack = selectedItemChangedEventArgs.SelectedItem as TechnologyStack;
-            await Navigation.PushAsync(new NavigationPage(new ViewStack(techStack.Slug)));
+            this.Navigation.PushAsync(new ViewStack(techStack.Slug));
         }
 
-        private async void FetchDetails()
+        private async Task FetchDetails()
         {
-            var resultTask =  await AppUtils.ServiceClient.GetAsync(new GetTechnology() { Slug = techSlug });
-            this.TechStacks = resultTask.TechnologyStacks;
+            var response = await AppUtils.ServiceClient.GetAsync(new GetTechnology() {Slug = techSlug});
+            this.TechStacks = response.TechnologyStacks;
             TechStacksDataSource.UpdateDataSource(this.TechStacks);
-            this.technology = resultTask.Technology;
+            this.technology = response.Technology;
             Device.BeginInvokeOnMainThread(() =>
             {
                 this.BindingContext = this.technology;
