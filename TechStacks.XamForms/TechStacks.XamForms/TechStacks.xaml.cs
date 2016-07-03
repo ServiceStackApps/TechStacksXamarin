@@ -28,7 +28,7 @@ namespace TechStacks.XamForms
         private void TechStacksListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
         {
             var technologyStack = selectedItemChangedEventArgs.SelectedItem as TechnologyStack;
-            Navigation.PushModalAsync(new NavigationPage(new ViewTech(technologyStack.Slug)));
+            Navigation.PushModalAsync(new NavigationPage(new ViewStack(technologyStack.Slug)));
         }
 
         private void Search()
