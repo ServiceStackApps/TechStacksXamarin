@@ -25,6 +25,14 @@ namespace TechStacks.XamForms
             this.ListView.ItemsSource = this.TechnologiesInStackDataSource;
             this.ListView.ItemSelected += ListViewOnItemSelected;
             FetchTechnologies().ConfigureAwait(false);
+            if (Navigation.NavigationStack.Count == 0 && Device.OS.ToString() == "iOS")
+            {
+                this.ToolbarItems.Add(new ToolbarItem
+                {
+                    Text = "Back",
+                    Command = new Command(() => Navigation.PopModalAsync())
+                });
+            }
         }
 
         private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
