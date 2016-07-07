@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using ServiceStack;
 using TechStacks.ServiceModel;
 using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
@@ -13,7 +11,7 @@ namespace TechStacks.XamForms
 {
     public partial class TopRated : ContentPage
     {
-        static Dictionary<TechnologyTier, string> techTypes = new Dictionary<TechnologyTier, string>
+        static readonly Dictionary<TechnologyTier, string> TechTypes = new Dictionary<TechnologyTier, string>
         {
             {TechnologyTier.ProgrammingLanguage, "Programming Languages" },
             {TechnologyTier.Client, "Client Libraries" },
@@ -35,13 +33,13 @@ namespace TechStacks.XamForms
             InitializeComponent();
 			TopTechsDataSource = new ObservableCollection<TechnologyInfo>();
 			TopTechsData = new List<TechnologyInfo>();
-            foreach (string val in techTypes.Values)
+            foreach (string val in TechTypes.Values)
             {
-                this.topTechPicker.Items.Add(val);
+                topTechPicker.Items.Add(val);
             }
-			topTechListView.ItemsSource = this.TopTechsDataSource;
-			this.topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
-            this.topTechListView.ItemSelected += TopTechListViewOnItemSelected;
+			topTechListView.ItemsSource = TopTechsDataSource;
+			topTechPicker.SelectedIndexChanged += TopTechPickerOnSelectedIndexChanged;
+            topTechListView.ItemSelected += TopTechListViewOnItemSelected;
             InitData().ConfigureAwait(false);
         }
 
@@ -68,11 +66,10 @@ namespace TechStacks.XamForms
                     continue;
                 }
                     
-                if (techInfo.Tier == techTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
+                if (techInfo.Tier == TechTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
                     TopTechsDataSource.Add(techInfo);
             }
         }
-
 
         private async Task InitData()
 		{

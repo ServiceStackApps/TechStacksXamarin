@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using ServiceStack;
-using TechStacks.ServiceModel;
 using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
 
@@ -14,15 +9,18 @@ namespace TechStacks.XamForms
 {
     public partial class TechStacks : ContentPage
     {
+        public ObservableCollection<TechnologyStack> ListDataSource { get; set; }
+        public List<TechnologyStack> TechStacksData { get; set; }
+
         public TechStacks()
         {
-            TechStackDataSource = new ObservableCollection<TechnologyStack>();
+            ListDataSource = new ObservableCollection<TechnologyStack>();
             TechStacksData = new List<TechnologyStack>();
             InitializeComponent();
             SearchBarTechStacks.TextChanged += (sender, args) => { Search(); };
-            TechStacksListView.ItemsSource = TechStackDataSource;
+            TechStacksListView.ItemsSource = ListDataSource;
             TechStacksListView.ItemSelected += TechStacksListViewOnItemSelected;
-            InitData();
+            InitData().ConfigureAwait(false);
         }
 
         private void TechStacksListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)
@@ -39,31 +37,15 @@ namespace TechStacks.XamForms
             responseTask.ContinueWith(x =>
             {
                 TechStacksData = x.Result.Results;
-                UpdateData();
+                ListDataSource.UpdateDataSource(TechStacksData);
             });
         }
 
-        private void UpdateData()
+        private async Task InitData()
         {
-            TechStackDataSource.Clear();
-            foreach (var techInfo in TechStacksData)
-            {
-                TechStackDataSource.Add(techInfo);
-            }
+            var response = await AppUtils.ServiceClient.GetAsync<QueryResponse<TechnologyStack>>("/techstacks/search?NameContains=");
+            TechStacksData = response.Results;
+            ListDataSource.UpdateDataSource(TechStacksData);
         }
-
-        private void InitData()
-        {
-            var responseTask = AppUtils.ServiceClient.GetAsync<QueryResponse<TechnologyStack>>("/techstacks/search?NameContains=");
-            responseTask.ConfigureAwait(false);
-            responseTask.ContinueWith(x =>
-            {
-                TechStacksData = x.Result.Results;
-                UpdateData();
-            });
-        }
-
-        public ObservableCollection<TechnologyStack> TechStackDataSource { get; set; }
-        public List<TechnologyStack> TechStacksData { get; set; }
     }
 }
