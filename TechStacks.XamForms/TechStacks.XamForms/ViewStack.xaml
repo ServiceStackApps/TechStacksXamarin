@@ -15,9 +15,10 @@
       <Label Grid.Column="0" Text="{Binding VendorName}"></Label>
       <Image Grid.Column="1" Source="{Binding ScreenshotUrl}" HeightRequest="100"></Image>
     </Grid>
-
-    <Label Text="{Binding Description}"></Label>
-    <Label Text="Technologies Used"></Label>
+    <ScrollView HeightRequest="100" HorizontalOptions="FillAndExpand">
+      <Label Text="{Binding Description}"></Label>
+    </ScrollView>
+    <Label Text="Technologies Used" FontAttributes="Bold" FontSize="20"></Label>
     <ListView x:Name="ListView">
       <ListView.ItemTemplate>
         <DataTemplate>
