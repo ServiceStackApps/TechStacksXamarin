@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Launch_center.png" translatesAutoresizingMaskIntoConstraints="NO" id="23" misplaced="YES">
                                 <rect key="frame" x="270" y="270" width="60" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
@@ -34,6 +34,28 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="AppIcon.appiconset/Icon-40.png" width="40" height="40"/>
+        <image name="AppIcon.appiconset/Icon-60.png" width="60" height="60"/>
+        <image name="AppIcon.appiconset/Icon-76.png" width="76" height="76"/>
+        <image name="AppIcon.appiconset/Icon-83.5.png" width="83.5" height="83.5"/>
+        <image name="AppIcon.appiconset/Icon-Small.png" width="29" height="29"/>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-Landscape.png" width="1024" height="748"/>
+        <image name="Default-Portrait.png" width="768" height="1004"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="ic_action_heart_original.png" width="48" height="48"/>
+        <image name="ic_action_stacks_original.png" width="48" height="48"/>
+        <image name="ic_action_tech_original.png" width="48" height="48"/>
+        <image name="Icon-40.png" width="40" height="40"/>
+        <image name="Icon-72.png" width="72" height="72"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-83.5.png" width="83.5" height="83.5"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small-50.png" width="50" height="50"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="ItunesArtwork.png" width="512" height="512"/>
+        <image name="Launch_center.png" width="150" height="150"/>
     </resources>
 </document>
