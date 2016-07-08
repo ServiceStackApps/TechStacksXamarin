@@ -16,6 +16,7 @@ namespace TechStacks.XamForms
             ListDataSource = new ObservableCollection<TechnologyStack>();
             TechStacksData = new List<TechnologyStack>();
             InitializeComponent();
+            NavigationPage.SetTitleIcon(this, "title_logo.png");
             SearchBarTechStacks.TextChanged += (sender, args) => { Search(); };
             TechStacksListView.ItemsSource = ListDataSource;
             TechStacksListView.ItemSelected += TechStacksListViewOnItemSelected;

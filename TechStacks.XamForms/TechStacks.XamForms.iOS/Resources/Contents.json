@@ -149,6 +149,30 @@
       "size": "96x96",
       "scale": "2x",
       "filename": "ic_action_stacks_original@2x"   
+    },
+    {
+      "idiom": "iphone",
+      "size": "88x69",
+      "scale": "2x",
+      "filename": "title_logo@2x"   
+    },
+    {
+      "idiom": "iphone",
+      "size": "44x35",
+      "scale": "1x",
+      "filename": "title_logo"   
+    },
+    {
+      "idiom": "ipad",
+      "size": "88x69",
+      "scale": "2x",
+      "filename": "title_logo@2x"   
+    },
+    {
+      "idiom": "ipad",
+      "size": "44x35",
+      "scale": "1x",
+      "filename": "title_logo"   
     }
   ],
   "info": {

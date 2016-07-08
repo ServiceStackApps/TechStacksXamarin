@@ -29,6 +29,7 @@ namespace TechStacks.XamForms
         public TopRated()
         {
             InitializeComponent();
+            NavigationPage.SetTitleIcon(this, "title_logo.png");
 			TopTechsDataSource = new ObservableCollection<TechnologyInfo>();
 			TopTechsData = new List<TechnologyInfo>();
             foreach (string val in TechTypes.Values)
