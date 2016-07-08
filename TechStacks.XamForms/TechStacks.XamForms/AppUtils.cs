@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ServiceStack;
-using TechStacks.ServiceModel;
-using TechStacks.ServiceModel.Types;
 
 namespace TechStacks.XamForms
 {

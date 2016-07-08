@@ -2,18 +2,19 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TechStacks.XamForms;assembly=TechStacks.XamForms"
-             x:Class="TechStacks.XamForms.MainPage">
-  <NavigationPage Title="Top Rated" Icon="ic_action_heart_original.png">
+             x:Class="TechStacks.XamForms.MainPage"
+             >
+  <NavigationPage Title="Top Rated" Icon="ic_action_heart_original.png" BarBackgroundColor="#0095F5" BarTextColor="White">
     <x:Arguments>
       <local:TopRated Title="Top Rated" />
     </x:Arguments>
   </NavigationPage>
-  <NavigationPage Title="Stacks" Icon="ic_action_stacks_original.png">
+  <NavigationPage Title="Stacks" Icon="ic_action_stacks_original.png" BarBackgroundColor="#0095F5" BarTextColor="White">
     <x:Arguments>
       <local:TechStacks Title="Tech Stacks"/>
     </x:Arguments>
   </NavigationPage>
-  <NavigationPage Title="Techs" Icon="ic_action_tech_original.png">
+  <NavigationPage Title="Techs" Icon="ic_action_tech_original.png" BarBackgroundColor="#0095F5" BarTextColor="White">
     <x:Arguments>
       <local:Technologies Title="Technologies" />
     </x:Arguments>

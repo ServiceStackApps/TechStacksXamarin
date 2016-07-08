@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ServiceStack;
-using TechStacks.ServiceModel;
-using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
 
 namespace TechStacks.XamForms

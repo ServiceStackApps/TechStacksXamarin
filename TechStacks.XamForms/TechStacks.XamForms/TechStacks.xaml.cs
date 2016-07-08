@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using ServiceStack;
-using TechStacks.ServiceModel.Types;
 using Xamarin.Forms;
 
 namespace TechStacks.XamForms

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using TechStacks.ServiceModel;
 using Xamarin.Forms;
 
 namespace TechStacks.XamForms
@@ -27,6 +26,7 @@ namespace TechStacks.XamForms
                 Text = isIos ? "Back" : "Close",
                 Command = new Command(() => Navigation.PopModalAsync())
             });
+            
         }
 
         private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)

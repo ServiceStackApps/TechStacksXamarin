@@ -36,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="MainForm.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -44,7 +43,7 @@
     <Compile Include="Technologies.xaml.cs">
       <DependentUpon>Technologies.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TechStackDtos.dtos.cs" />
+    <Compile Include="TechStacks.dtos.cs" />
     <Compile Include="TechStacks.xaml.cs">
       <DependentUpon>TechStacks.xaml</DependentUpon>
     </Compile>
