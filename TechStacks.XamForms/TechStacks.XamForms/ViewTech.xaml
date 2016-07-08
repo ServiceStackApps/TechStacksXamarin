@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="{Binding VendorName}" FontAttributes="Italic" FontSize="16"></Label>
+        <Label Grid.Column="0" Text="{Binding VendorName}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Italic" FontSize="16"></Label>
         <Image Grid.Column="1" Source="{Binding LogoUrl}" HeightRequest="100"></Image>
     </Grid>
     <ScrollView HeightRequest="100" HorizontalOptions="FillAndExpand">

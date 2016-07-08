@@ -17,7 +17,7 @@ namespace TechStacks.XamForms
             TechsData = new List<Technology>();
             InitializeComponent();
             NavigationPage.SetTitleIcon(this, "title_logo.png");
-            SearchBarTechnologies.TextChanged += (sender, args) => { Search(); };
+            SearchBarTechnologies.TextChanged += (sender, args) => { Search().ConfigureAwait(false); };
             TechnologiesListView.ItemsSource = ListDataSource;
             TechnologiesListView.ItemSelected += TechnologiesListViewOnItemSelected;
             InitData().ConfigureAwait(false);
@@ -29,21 +29,17 @@ namespace TechStacks.XamForms
             Navigation.PushModalAsync(new NavigationPage(new ViewTech(technology.Slug)));
         }
 
-        private void Search()
+        private async Task Search()
         {
-            var responseTask = AppUtils.ServiceClient.
-                GetAsync<QueryResponse<Technology>>("/technology/search?NameContains=" + SearchBarTechnologies.Text);
-            responseTask.ConfigureAwait(false);
-            responseTask.ContinueWith(x =>
-            {
-                TechsData = x.Result.Results;
-                ListDataSource.UpdateDataSource(TechsData);
-            });
+            var response = await AppUtils.ServiceClient.
+                GetAsync(new FindTechnologies { NameContains = SearchBarTechnologies.Text });
+            TechsData = response.Results;
+            ListDataSource.UpdateDataSource(TechsData);
         }
 
         private async Task InitData()
         {
-            var response = await AppUtils.ServiceClient.GetAsync<QueryResponse<Technology>>("/technology/search?NameContains=");
+            var response = await AppUtils.ServiceClient.GetAsync(new GetAllTechnologies());
             TechsData = response.Results;
             ListDataSource.UpdateDataSource(TechsData);
         }

@@ -26,7 +26,6 @@ namespace TechStacks.XamForms
                 Text = isIos ? "Back" : "Close",
                 Command = new Command(() => Navigation.PopModalAsync())
             });
-            
         }
 
         private void ListViewOnItemSelected(object sender, SelectedItemChangedEventArgs selectedItemChangedEventArgs)

@@ -22,7 +22,6 @@ namespace TechStacks.XamForms
             {TechnologyTier.ThirdPartyServices, "3rd Party API/Services" }
         };
 
-
         public ObservableCollection<TechnologyInfo> TopTechsDataSource { get; set; }
         public List<TechnologyInfo> TopTechsData { get; set; }
 
@@ -56,18 +55,11 @@ namespace TechStacks.XamForms
         private void UpdateData()
         {
             TopTechsDataSource.Clear();
-            //Filter
-            foreach (var techInfo in TopTechsData)
-            {
-                if (topTechPicker.SelectedIndex == -1)
-                {
-                    TopTechsDataSource.Add(techInfo);
-                    continue;
-                }
-                    
-                if (techInfo.Tier == TechTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString())
-                    TopTechsDataSource.Add(techInfo);
-            }
+            if (topTechPicker.SelectedIndex == -1)
+                TopTechsDataSource.UpdateDataSource(TopTechsData);
+            else //Filter
+                TopTechsDataSource.UpdateDataSource(TopTechsData
+                    .Where(x => x.Tier == TechTypes.Keys.ElementAt(topTechPicker.SelectedIndex).ToString()).ToList());
         }
 
         private async Task InitData()

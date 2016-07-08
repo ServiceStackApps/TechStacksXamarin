@@ -1,5 +1,5 @@
 /* Options:
-Date: 2016-07-08 03:08:32
+Date: 2016-07-08 06:31:00
 Version: 4.060
 Tip: To override a DTO option, remove "//" prefix before updating
 BaseUrl: http://techstacks.io
@@ -188,6 +188,7 @@ namespace TechStacks.XamForms
         : QueryDb<Technology>, IReturn<QueryResponse<Technology>>
     {
         public string Name { get; set; }
+        public string NameContains { get; set; }
     }
 
     [Route("/admin/technology/search")]
@@ -203,6 +204,7 @@ namespace TechStacks.XamForms
     public class FindTechStacks
         : QueryDb<TechnologyStack>, IReturn<QueryResponse<TechnologyStack>>
     {
+        public string NameContains { get; set; }
     }
 
     [Route("/technology", "GET")]
