@@ -1,5 +1,5 @@
 # TechStacksXamarin
-This project is an example application showing the use of ServiceStack with a Xamarin.Forms client. Xamarin.Forms allows for maximum code reuse between iOS and Android platform application whilst enabling customization through styling or custom platform specific renderers. This combined with ServiceStack.Client allows for a strongly typed end to end solution where views can used ServiceStack reference in or as View Models.
+This project is an example application showing the use of ServiceStack with a Xamarin.Forms Android and iOS client. Xamarin.Forms allows for maximum code reuse between iOS and Android platform application whilst enabling customization through styling or custom platform specific renderers. This combined with ServiceStack.Client allows for a strongly typed end to end solution where views can used ServiceStack reference in or as View Models.
 
 ## Overview
 This example was created using Visual Studio 2015's built in templates for Xamarin Forms. This generates the basis of a cross platform application for iOS and Android*.
