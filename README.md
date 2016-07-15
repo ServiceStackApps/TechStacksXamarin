@@ -22,4 +22,4 @@ The above steps will download the C# types that are used for integrating with th
 
 Once these are added, we can start testing our clients using the JsonServiceClient.
 
-### Using the JsonServiceClient
+### Using the JsonServiceClient 
