@@ -52,7 +52,7 @@ private async Task InitData()
 }
 ```
 
-#### Binding data
+### [Binding data when using XAML](https://developer.xamarin.com/guides/xamarin-forms/xaml/xaml-basics/data_binding_basics/)
 One way to take advantage of the strongly typed client on our Xamarin.Forms application is be using our ServiceStack reference types in our Views/Pages. Xamarin provides generic observable wrappers that can be bound to. For example, the TopRated technologies page, we create an `ObservableCollection<T>` for binding lists.
 
 ``` csharp
@@ -80,3 +80,4 @@ this.ListView.ItemsSource = TopTechsDataSource;
 <img src="https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/android-client.png" height="400" style="float:left" />
 
 <img src="https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/ios-client.png" height="400" />
+
