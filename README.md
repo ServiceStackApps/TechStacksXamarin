@@ -76,8 +76,7 @@ this.ListView.ItemsSource = TopTechsDataSource;
   </ListView.ItemTemplate>
 </ListView>
 ```
+![](https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/android-client.png)
 
-<img src="https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/android-client.png" height="400" style="float:left" />
-
-<img src="https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/ios-client.png" height="400" />
+![](https://raw.githubusercontent.com/ServiceStack/Assets/master/img/apps/TechStacksXamForms/ios-client.png)
 
