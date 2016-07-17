@@ -8,14 +8,12 @@ namespace TechStacks.XamForms
     public partial class ViewStack : ContentPage
     {
         private readonly string stackSlug;
-        public List<TechnologyInStack> TechnologiesInStack;
         public ObservableCollection<TechnologyInStack> ListDataSource = new ObservableCollection<TechnologyInStack>();
         private TechStackDetails technologyStack;
 
         public ViewStack(string stackSlug)
         {
             this.stackSlug = stackSlug;
-            TechnologiesInStack = new List<TechnologyInStack>();
             InitializeComponent();
             ListView.ItemsSource = ListDataSource;
             ListView.ItemSelected += ListViewOnItemSelected;
@@ -37,9 +35,8 @@ namespace TechStacks.XamForms
         private async Task FetchTechnologies()
         {
             var result = await AppUtils.ServiceClient.GetAsync(new GetTechnologyStack {Slug = stackSlug });
-            TechnologiesInStack = result.Result.TechnologyChoices;
             technologyStack = result.Result;
-            ListDataSource.UpdateDataSource(TechnologiesInStack);
+            ListDataSource.UpdateDataSource(result.Result.TechnologyChoices);
             Device.BeginInvokeOnMainThread(() =>
             {
                 BindingContext = technologyStack;

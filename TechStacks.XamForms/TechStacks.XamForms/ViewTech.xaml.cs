@@ -12,7 +12,6 @@ namespace TechStacks.XamForms
     public partial class ViewTech : ContentPage
     {
         private readonly string techSlug;
-        public List<TechnologyStack> TechStacks = new List<TechnologyStack>();
         public ObservableCollection<TechnologyStack> TechStacksDataSource = new ObservableCollection<TechnologyStack>();
         private Technology technology;
 
@@ -40,10 +39,9 @@ namespace TechStacks.XamForms
         private async Task FetchDetails()
         {
             var response = await AppUtils.ServiceClient.GetAsync(new GetTechnology() {Slug = techSlug});
-            this.TechStacks = response.TechnologyStacks;
-            TechStacksDataSource.UpdateDataSource(this.TechStacks);
+            TechStacksDataSource.UpdateDataSource(response.TechnologyStacks);
             this.technology = response.Technology;
-            if (this.TechStacks.Count == 0)
+            if (response.TechnologyStacks.Count == 0)
                 usedInLabel.IsVisible = false;
             Device.BeginInvokeOnMainThread(() =>
             {

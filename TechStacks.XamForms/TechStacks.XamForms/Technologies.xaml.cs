@@ -9,12 +9,10 @@ namespace TechStacks.XamForms
     public partial class Technologies : ContentPage
     {
         public ObservableCollection<Technology> ListDataSource { get; set; }
-        public List<Technology> TechsData { get; set; }
 
         public Technologies()
         {
             ListDataSource = new ObservableCollection<Technology>();
-            TechsData = new List<Technology>();
             InitializeComponent();
             NavigationPage.SetTitleIcon(this, "title_logo.png");
             SearchBarTechnologies.TextChanged += (sender, args) => { Search().ConfigureAwait(false); };
@@ -33,15 +31,13 @@ namespace TechStacks.XamForms
         {
             var response = await AppUtils.ServiceClient.
                 GetAsync(new FindTechnologies { NameContains = SearchBarTechnologies.Text });
-            TechsData = response.Results;
-            ListDataSource.UpdateDataSource(TechsData);
+            ListDataSource.UpdateDataSource(response.Results);
         }
 
         private async Task InitData()
         {
             var response = await AppUtils.ServiceClient.GetAsync(new GetAllTechnologies());
-            TechsData = response.Results;
-            ListDataSource.UpdateDataSource(TechsData);
+            ListDataSource.UpdateDataSource(response.Results);
         }
     }
 }

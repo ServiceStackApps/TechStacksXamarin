@@ -13,8 +13,6 @@ namespace TechStacks.XamForms
         public MainPage()
         {
             InitializeComponent();
-            NavigationRoot = this.Navigation;
         }
-        public static INavigation NavigationRoot { get; set; }
     }
 }
